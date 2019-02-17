@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch build --exec node \"./build/bundle.js\"",
-    "build": "webpack --config webpack.server.js --watch"
+    "dev": "npm-run-all --parallel dev:**",
+    "dev:start": "nodemon --watch build --exec node \"./build/bundle.js\"",
+    "dev:build": "webpack --config webpack.server.js --watch"
   },
   "repository": "https://github.com/Jack-cool/react-server.git",
   "author": "fengshuan <1263215592@qq.com>",
@@ -16,6 +17,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "express": "^4.16.4",
+    "npm-run-all": "^4.1.5",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "webpack": "^4.29.4",
