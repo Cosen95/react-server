@@ -10,6 +10,7 @@ import { renderToString } from 'react-dom/server';
 // react代码在服务器上执行，消耗的是服务器端的性能
 
 const app = express();
+app.use(express.static('public'));
 
 const content = renderToString(<Home />);
 
@@ -21,6 +22,7 @@ app.get('/', (req, res) =>
             </head>
             <body>
                 ${content}
+                <script src='/index.js'></script>
             </body>
         </html>`
     )

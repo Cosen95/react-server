@@ -12,3 +12,4 @@
 * webpack自动打包：添加--watch参数
 * 服务器自动重启：nodemon/supervisor
 * npm-run-all提升开发效率
+* 同构：一套react代码，在服务器端执行一次，在客户端再执行一次
