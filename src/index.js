@@ -21,7 +21,7 @@ app.get('/', (req, res) =>
                 <title>ssr</title>
             </head>
             <body>
-                ${content}
+                <div id="root">${content}</div>
                 <script src='/index.js'></script>
             </body>
         </html>`

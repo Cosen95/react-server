@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "npm-run-all --parallel dev:**",
     "dev:start": "nodemon --watch build --exec node \"./build/bundle.js\"",
-    "dev:build": "webpack --config webpack.server.js --watch"
+    "dev:build:server": "webpack --config webpack.server.js --watch",
+    "dev:build:client": "webpack --config webpack.client.js --watch"
   },
   "repository": "https://github.com/Jack-cool/react-server.git",
   "author": "fengshuan <1263215592@qq.com>",
