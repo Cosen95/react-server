@@ -19,3 +19,4 @@
 * webpack-merge可将不同webpack配置文件中的公用部分提取出来，抽为webpack.base.js
 * 同构流程：服务器端运行react代码渲染出html >> 发送html给浏览器 >> 浏览器接收到内容展示 >> 浏览器加载js文件 >> js中的react代码在浏览器端重新执行 >> js中的react代码接管页面操作
 * 客户端渲染中的路由：服务器端返回html >> 发送html给浏览器 >> 浏览器接收到内容展示 >> 浏览器加载js文件 >> js中的react代码在浏览器端执行 >> js中的react代码接管页面操作 >> js代码拿到浏览器上的地址 >> js代码根据地址返回不同的路由内容
+* 客户端路由BrowserRouter/服务端路由StaticRouter
