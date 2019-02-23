@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import homeReducer from '../containers/Home/store/reducer';
+import { reducer as homeReducer } from '../containers/Home/store';
 
 const reducer = combineReducers({
     home: homeReducer
