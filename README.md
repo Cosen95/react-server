@@ -21,6 +21,7 @@
 * 客户端渲染中的路由：服务器端返回html >> 发送html给浏览器 >> 浏览器接收到内容展示 >> 浏览器加载js文件 >> js中的react代码在浏览器端执行 >> js中的react代码接管页面操作 >> js代码拿到浏览器上的地址 >> js代码根据地址返回不同的路由内容
 * 客户端路由BrowserRouter/服务端路由StaticRouter
 * 服务器端渲染只发生在第一次进入页面时
+* react-router-config中的matchRoutes方法可匹配多级路由
 
 ### 流程回顾及问题分析
 1.服务器接收到请求，这个时候store是空的

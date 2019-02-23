@@ -419,6 +419,18 @@ eval("var url = __webpack_require__(/*! url */ \"url\");\nvar URL = url.URL;\nva
 
 /***/ }),
 
+/***/ "./node_modules/react-router-config/esm/react-router-config.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/react-router-config/esm/react-router-config.js ***!
+  \*********************************************************************/
+/*! exports provided: matchRoutes, renderRoutes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"matchRoutes\", function() { return matchRoutes; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"renderRoutes\", function() { return renderRoutes; });\n/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router */ \"react-router\");\n/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_router__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ \"@babel/runtime/helpers/esm/extends\");\n/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nfunction matchRoutes(routes, pathname,\n/*not public API*/\nbranch) {\n  if (branch === void 0) {\n    branch = [];\n  }\n\n  routes.some(function (route) {\n    var match = route.path ? Object(react_router__WEBPACK_IMPORTED_MODULE_0__[\"matchPath\"])(pathname, route) : branch.length ? branch[branch.length - 1].match // use parent match\n    : react_router__WEBPACK_IMPORTED_MODULE_0__[\"Router\"].computeRootMatch(pathname); // use default \"root\" match\n\n    if (match) {\n      branch.push({\n        route: route,\n        match: match\n      });\n\n      if (route.routes) {\n        matchRoutes(route.routes, pathname, branch);\n      }\n    }\n\n    return match;\n  });\n  return branch;\n}\n\nfunction renderRoutes(routes, extraProps, switchProps) {\n  if (extraProps === void 0) {\n    extraProps = {};\n  }\n\n  if (switchProps === void 0) {\n    switchProps = {};\n  }\n\n  return routes ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_0__[\"Switch\"], switchProps, routes.map(function (route, i) {\n    return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_0__[\"Route\"], {\n      key: route.key || i,\n      path: route.path,\n      exact: route.exact,\n      strict: route.strict,\n      render: function render(props) {\n        return route.render ? route.render(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1___default()({}, props, extraProps, {\n          route: route\n        })) : react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(route.component, _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1___default()({}, props, extraProps, {\n          route: route\n        }));\n      }\n    });\n  })) : null;\n}\n\n\n\n\n//# sourceURL=webpack:///./node_modules/react-router-config/esm/react-router-config.js?");
+
+/***/ }),
+
 /***/ "./src/Routes.js":
 /*!***********************!*\
   !*** ./src/Routes.js ***!
@@ -535,7 +547,7 @@ eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.render = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _store = __webpack_require__(/*! ../store */ \"./src/store/index.js\");\n\nvar _store2 = _interopRequireDefault(_store);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar render = exports.render = function render(req) {\n\n    var store = (0, _store2.default)();\n\n    // 拿到异步数据，并填充到store之中\n    // 结合当前用户请求地址和路由,做异步数据获取\n    // 如果用户访问 / 路径，我们就拿home组件的异步数据\n    // 如果用户访问 /login 路径，我们就拿login组件的异步数据\n\n    var matchRoutes = [];\n\n    _Routes2.default.some(function (route) {\n        var match = (0, _reactRouterDom.matchPath)(req.path, route);\n        if (match) {\n            matchRoutes.push(route);\n        }\n    });\n\n    var content = (0, _server.renderToString)(_react2.default.createElement(\n        _reactRedux.Provider,\n        { store: store },\n        _react2.default.createElement(\n            _reactRouterDom.StaticRouter,\n            { location: req.path, context: {} },\n            _react2.default.createElement(\n                'div',\n                null,\n                _Routes2.default.map(function (route) {\n                    return _react2.default.createElement(_reactRouterDom.Route, route);\n                })\n            )\n        )\n    ));\n\n    return '<html>\\n        <head>\\n            <title>ssr</title>\\n        </head>\\n        <body>\\n            <div id=\"root\">' + content + '</div>\\n            <script src=\\'/index.js\\'></script>\\n        </body>\\n    </html>';\n};\n\n//# sourceURL=webpack:///./src/server/utils.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.render = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"./node_modules/react-router-config/esm/react-router-config.js\");\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _store = __webpack_require__(/*! ../store */ \"./src/store/index.js\");\n\nvar _store2 = _interopRequireDefault(_store);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar render = exports.render = function render(req) {\n\n    var store = (0, _store2.default)();\n\n    // 根据路由的路径，来往store里面加数据\n    var matchedRoutes = (0, _reactRouterConfig.matchRoutes)(_Routes2.default, req.path);\n    console.log(matchedRoutes);\n\n    var content = (0, _server.renderToString)(_react2.default.createElement(\n        _reactRedux.Provider,\n        { store: store },\n        _react2.default.createElement(\n            _reactRouterDom.StaticRouter,\n            { location: req.path, context: {} },\n            _react2.default.createElement(\n                'div',\n                null,\n                _Routes2.default.map(function (route) {\n                    return _react2.default.createElement(_reactRouterDom.Route, route);\n                })\n            )\n        )\n    ));\n\n    return '<html>\\n        <head>\\n            <title>ssr</title>\\n        </head>\\n        <body>\\n            <div id=\"root\">' + content + '</div>\\n            <script src=\\'/index.js\\'></script>\\n        </body>\\n    </html>';\n};\n\n//# sourceURL=webpack:///./src/server/utils.js?");
 
 /***/ }),
 
@@ -548,6 +560,17 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"redux-thunk\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nvar _store = __webpack_require__(/*! ../containers/Home/store */ \"./src/containers/Home/store/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar reducer = (0, _redux.combineReducers)({\n    home: _store.reducer\n});\nvar getStore = function getStore() {\n    return (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n};\n\nexports.default = getStore;\n\n//# sourceURL=webpack:///./src/store/index.js?");
+
+/***/ }),
+
+/***/ "@babel/runtime/helpers/esm/extends":
+/*!*****************************************************!*\
+  !*** external "@babel/runtime/helpers/esm/extends" ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@babel/runtime/helpers/esm/extends\");\n\n//# sourceURL=webpack:///external_%22@babel/runtime/helpers/esm/extends%22?");
 
 /***/ }),
 
@@ -647,6 +670,17 @@ eval("module.exports = require(\"react-dom/server\");\n\n//# sourceURL=webpack:/
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"react-redux\");\n\n//# sourceURL=webpack:///external_%22react-redux%22?");
+
+/***/ }),
+
+/***/ "react-router":
+/*!*******************************!*\
+  !*** external "react-router" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-router\");\n\n//# sourceURL=webpack:///external_%22react-router%22?");
 
 /***/ }),
 
