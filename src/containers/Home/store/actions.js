@@ -9,7 +9,7 @@ const changeList = (list) => ({
 
 export const getHomeList = () => {
     return (dispatch) => {
-        axios.get('https://www.easy-mock.com/mock/5c7103f8dcf13129127978cc/react_ssr/getHomeList')
+        return axios.get('https://www.easy-mock.com/mock/5c7103f8dcf13129127978cc/react_ssr/getHomeList')
             .then((res) => {
                 const list = res.data.data;
                 dispatch(changeList(list));

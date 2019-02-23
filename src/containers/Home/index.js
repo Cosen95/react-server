@@ -28,8 +28,9 @@ class Home extends Component {
     }
 }
 
-Home.loadData = () => {
+Home.loadData = (store) => {
     // 负责在服务器端渲染之前，把这个路由需要的数据提前加载好
+    return store.dispatch(getHomeList())
 }
 
 const mapStateToProps = state => ({
