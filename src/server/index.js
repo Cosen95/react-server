@@ -1,7 +1,7 @@
 import express from 'express';
 import { render } from './utils';
 import routes from '../Routes';
-import getStore from '../store';
+import { getStore } from '../store';
 import { matchRoutes } from 'react-router-config';
 
 // 客户端渲染
