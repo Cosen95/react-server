@@ -25,9 +25,9 @@
 * 数据的脱水和注水：客户端创建store数据来源于服务端store数据（服务端渲染后，将store中数据注水至window.context.state中；客户端渲染直接从window.context.state中脱水拿到store数据，渲染页面。可避免首次进入页面时，页面闪动，因为这时服务端渲染结束后，客户端渲染时store数据为空，需异步请求）
 
 ### 流程回顾及问题分析
-1.服务器接收到请求，这个时候store是空的
-2.服务器端不会执行componentDidMount，所以列表内容获取不到
-3.客户端代码运行，这个时候store依然是空的
-4.客户端执行componentDidMount，列表数据被获取
-5.store中的列表数据被更新
-6.客户端渲染出store中list数据对应的列表内容
+1. 服务器接收到请求，这个时候store是空的
+2. 服务器端不会执行componentDidMount，所以列表内容获取不到
+3. 客户端代码运行，这个时候store依然是空的
+4. 客户端执行componentDidMount，列表数据被获取
+5. store中的列表数据被更新
+6. 客户端渲染出store中list数据对应的列表内容
