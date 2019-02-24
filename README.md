@@ -23,6 +23,7 @@
 * 服务器端渲染只发生在第一次进入页面时
 * favicon图标请求处理（放入public文件夹下） && 多级路由问题处理（采用react-router-config中的matchRoutes:react-router-config中的matchRoutes方法可匹配多级路由,而react-router-dom中的matchPath方法只能匹配单一路由）
 * 数据的脱水和注水：客户端创建store数据来源于服务端store数据（服务端渲染后，将store中数据注水至window.context.state中；客户端渲染直接从window.context.state中脱水拿到store数据，渲染页面。可避免首次进入页面时，页面闪动，因为这时服务端渲染结束后，客户端渲染时store数据为空，需异步请求）
+* 使用proxy(express-http-proxy)代理，让中间层承担数据获取职责（浏览器 > nodeServer > apiServer）。客户端向nodeServer发送请求，nodeServer代理请求，转发请求至apiServer；apiServer响应请求，返回数据至nodeServer，nodeServer转发数据给浏览器。
 
 ### 流程回顾及问题分析
 1. 服务器接收到请求，这个时候store是空的
