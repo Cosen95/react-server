@@ -13,7 +13,6 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <Header />
                 <div>{this.props.name}</div>
                 {
                     this.getList()
