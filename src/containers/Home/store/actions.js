@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { CHANGE_LIST } from './constants';
-import clientAxios from '../../../client/request';
-import serverAxios from '../../../server/request';
 
 
 const changeList = (list) => ({
@@ -20,9 +18,8 @@ export const getHomeList = (server) => {
     // } else {
     //     url = '/react_ssr/getHomeList'
     // }
-    const request = server ? serverAxios : clientAxios;
-    return (dispatch) => {
-        return request.get('/react_ssr/getHomeList')
+    return (dispatch, getState, axiosInstance) => {
+        return axiosInstance.get('/react_ssr/getHomeList')
             .then((res) => {
                 const list = res.data.data;
                 dispatch(changeList(list));

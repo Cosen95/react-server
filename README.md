@@ -26,6 +26,11 @@
 * 使用proxy(express-http-proxy)代理，让中间层承担数据获取职责（浏览器 > nodeServer > apiServer）。客户端向nodeServer发送请求，nodeServer代理请求，转发请求至apiServer；apiServer响应请求，返回数据至nodeServer，nodeServer转发数据给浏览器。
 * `src/containers/Home/store/actions.js`文件中服务端请求和客户端请求url地址不同
 * axios中instance的使用（创建axios实例）
+* redux-thunk中的withExtraArgument 
+`const store = createStore(
+  reducer,
+  applyMiddleware(thunk.withExtraArgument(api))
+)`
 
 ### 流程回顾及问题分析
 1. 服务器接收到请求，这个时候store是空的
