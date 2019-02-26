@@ -11,4 +11,8 @@ const App = (props) => {
     )
 }
 
+App.loadData = (store) => {
+    
+}
+
 export default App;
