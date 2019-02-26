@@ -21,7 +21,7 @@ app.use('/react_ssr', proxy('https://www.easy-mock.com', {
   }));
 
 app.get('*', (req, res) => {
-    const store = getStore();
+    const store = getStore(req);
 
     // 根据路由的路径，来往store里面加数据
     const matchedRoutes = matchRoutes(routes, req.path);
