@@ -1,0 +1,1 @@
+export const TRANS_LIST = 'TRANSLATION/TRANS_LIST';
