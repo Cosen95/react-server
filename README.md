@@ -32,6 +32,7 @@
   applyMiddleware(thunk.withExtraArgument(api))
 )`
 * renderRoutes方法实现对多级路由的支持
+* 借助context(staticContext)实现404页面
 
 ### 流程回顾及问题分析
 1. 服务器接收到请求，这个时候store是空的
