@@ -37,7 +37,7 @@ app.get('*', (req, res) => {
     Promise.all(promises).then(() => {
         const context = {};
         const html = render(store, routes, req, context);
-        // 服务端301重定向
+        // 服务器端渲染301重定向
         if(context.action === 'REPLACE') {
             res.redirect(301,context.url)
         } else if(context.NOT_FOUND) {
