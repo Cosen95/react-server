@@ -5,6 +5,12 @@ import { getHomeList } from './store/actions';
 import styles from './index.css'
 class Home extends Component {
 
+    componentWillMount() {
+        if(this.props.staticContext) {
+            this.props.staticContext.css = styles._getCss();
+        }
+    }
+
     getList() {
         const { list } = this.props;
         return list.map(item => <div key={item.id}>{item.title}</div> )
