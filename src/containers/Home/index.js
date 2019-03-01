@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../../components/Header';
 import { connect } from 'react-redux';
 import { getHomeList } from './store/actions';
-
+import styles from './index.css'
 class Home extends Component {
 
     getList() {
