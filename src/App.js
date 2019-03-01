@@ -5,7 +5,7 @@ import { renderRoutes } from 'react-router-config';
 const App = (props) => {
     return (
         <div>
-            <Header />
+            <Header staticContext={props.staticContext} />
             {renderRoutes(props.route.routes)}
         </div>
     )

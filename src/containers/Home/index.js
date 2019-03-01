@@ -7,7 +7,7 @@ class Home extends Component {
 
     componentWillMount() {
         if(this.props.staticContext) {
-            this.props.staticContext.css = styles._getCss();
+            this.props.staticContext.css.push(styles._getCss());
         }
     }
 
