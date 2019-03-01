@@ -33,6 +33,7 @@
 )`
 * renderRoutes方法实现对多级路由的支持
 * 借助context(staticContext)实现404页面及服务器端301重定向
+* css样式的支持:引入css-loader、style-loader(客户端)、isomorphic-style-loader(服务器端)。通过在组件componentWillMount生命周期中调用styles._getCss()方法为服务器端添加样式
 
 ### 流程回顾及问题分析
 1. 服务器接收到请求，这个时候store是空的
