@@ -35,6 +35,7 @@
 * 借助context(staticContext)实现404页面及服务器端301重定向
 * css样式的支持:引入css-loader、style-loader(客户端)、isomorphic-style-loader(服务器端)。通过在组件componentWillMount生命周期中调用styles._getCss()方法为服务器端添加样式
 * 高阶组件精简代码
+* title和description的真正作用：提高网站的转化率
 
 ### 流程回顾及问题分析
 1. 服务器接收到请求，这个时候store是空的
@@ -55,3 +56,12 @@
 (1) 浏览器去请求html（携带了cookie）
 (2) nodeJs服务器进行服务器端渲染
 (3) 进行服务器端渲染，首先要去api服务器取数据（没有携带cookie）
+
+### 如何进行SEO
+一个网站一般由三部分组成：文字、链接、多媒体（图片、音频、视频等）
+1. 文字
+文字尽量原创可提高seo访问
+2. 链接
+链接分内链和外链。提高外链数量和内链内容相关度
+3. 多媒体
+适当提高网站图片数量（提升网站内容丰富度）和原创性
