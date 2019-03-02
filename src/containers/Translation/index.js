@@ -23,11 +23,6 @@ class Translation extends Component {
     }
 }
 
-Translation.loadData = (store) => {
-    // 负责在服务器端渲染之前，把这个路由需要的数据提前加载好
-    return store.dispatch(getTranslationList())
-}
-
 const mapStateToProps = state => ({
     transList: state.translation.transList   
 });
@@ -36,6 +31,13 @@ const mapDispatchToProps = dispatch => ({
     getTransList() {
         dispatch(getTranslationList());
     }
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Translation);
+const ExportTranslation = connect(mapStateToProps, mapDispatchToProps)(Translation);
+
+ExportTranslation.loadData = (store) => {
+    // 负责在服务器端渲染之前，把这个路由需要的数据提前加载好
+    return store.dispatch(getTranslationList())
+}
+
+export default ExportTranslation;
