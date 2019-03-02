@@ -7,12 +7,10 @@ class Header extends Component {
     
     render() {
         return (
-            <div className={styles.content}>
-                <Link to = '/'>Home</Link>
-                <br />
-                <Link to = '/login'>Login</Link>
-                <br />
-                <Link to = '/translation'>翻译列表</Link>
+            <div className={styles.container}>
+                <Link to = '/' className={styles.item}>首页</Link>
+                <Link to = '/login'className={styles.item}>登陆</Link>
+                <Link to = '/translation' className={styles.item}>翻译列表</Link>
             </div> 
         )
     }
