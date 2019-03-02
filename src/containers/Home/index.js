@@ -3,13 +3,9 @@ import Header from '../../components/Header';
 import { connect } from 'react-redux';
 import { getHomeList } from './store/actions';
 import styles from './index.css'
-class Home extends Component {
+import withStyle from '../../withStyle';
 
-    componentWillMount() {
-        if(this.props.staticContext) {
-            this.props.staticContext.css.push(styles._getCss());
-        }
-    }
+class Home extends Component {
 
     getList() {
         const { list } = this.props;
@@ -46,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-const ExportHome = connect(mapStateToProps, mapDispatchToProps)(Home);
+const ExportHome = connect(mapStateToProps, mapDispatchToProps)(withStyle(Home, styles));
 
 ExportHome.loadData = (store) => {
     // 负责在服务器端渲染之前，把这个路由需要的数据提前加载好

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './index.css';
+import withStyle from '../../withStyle';
 
 class Header extends Component {
-    componentWillMount() {
-        if(this.props.staticContext) {
-            this.props.staticContext.css.push(styles._getCss());
-        }
-    }
+    
     render() {
         return (
             <div className={styles.content}>
@@ -21,4 +18,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withStyle(Header, styles);
