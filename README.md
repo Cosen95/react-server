@@ -114,3 +114,19 @@ const html = `
 `;
 
 ```
+
+### Prerender
+单页面应用的主要内容都依赖于JS的执行，当其首页面下载下来的时候，其实不是完整的页面，而是HTML + JS文件，浏览器提供执行环境于是页面被渲染了出来。用户在访问的时候体验会很好，但是对于搜索引擎的爬虫就不太友善了，因为他们不能执行JS，这时候Prerender就派上用场了，它可以帮忙把页面渲染完成之后再返回给爬虫工具，我们的页面也就能被解析到了。
+
+1. 安装
+`yarn add prerender`
+2. 使用
+`server.js`
+```
+const prerender = require('prerender');
+const server = prerender();
+server.start();
+
+```
+
+测试：`curl http://localhost:3000/render?url=https://www.example.com/`
