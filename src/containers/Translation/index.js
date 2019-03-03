@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { getTranslationList } from './store/actions';
 import styles from './index.css';
 import withStyle from '../../withStyle';
@@ -10,13 +11,20 @@ class Translation extends Component {
     render() {
         const { transList } = this.props;
         return (
-            <div className={styles.container}>
-               {
-                   transList.map(item => {
-                       return <div key={item.id} className={styles.item}>{item.title}</div>
-                   }) 
-               }
-            </div>
+            <Fragment>
+                 <Helmet>
+                    <title>翻译列表页</title>
+                    <meta name="description" content="前沿国外前端技术栈分享" />
+                </Helmet>
+                <div className={styles.container}>
+                {
+                    transList.map(item => {
+                        return <div key={item.id} className={styles.item}>{item.title}</div>
+                    }) 
+                }
+                </div>
+            </Fragment>    
+            
         )
     }
 

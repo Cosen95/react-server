@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import Header from '../../components/Header';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
+import Header from '../../components/Header';
 import { getHomeList } from './store/actions';
 import styles from './index.css'
 import withStyle from '../../withStyle';
@@ -14,11 +15,17 @@ class Home extends Component {
 
     render() {
         return (
-            <div className={styles.container}>
-                {
-                    this.getList()
-                }
-            </div>
+            <Fragment>
+                <Helmet>
+                    <title>jack-cool的ssr项目首页</title>
+                    <meta name="description" content="ssr初尝" />
+                </Helmet>
+                <div className={styles.container}>
+                    {
+                        this.getList()
+                    }
+                </div>
+            </Fragment>    
         )
     }
 
