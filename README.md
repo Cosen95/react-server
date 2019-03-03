@@ -65,3 +65,52 @@
 链接分内链和外链。提高外链数量和内链内容相关度
 3. 多媒体
 适当提高网站图片数量（提升网站内容丰富度）和原创性
+
+### React-Helmet
+定制页面title和description
+1. 安装
+`yarn add react-helmet`
+2. 客户端使用
+```
+import React from "react";
+import {Helmet} from "react-helmet";
+
+class Application extends React.Component {
+  render () {
+    return (
+        <div className="application">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>My Title</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
+            ...
+        </div>
+    );
+  }
+};
+
+```
+3. 服务端使用
+```
+ReactDOMServer.renderToString(<Handler />);
+const helmet = Helmet.renderStatic();
+
+
+const html = `
+    <!doctype html>
+    <html ${helmet.htmlAttributes.toString()}>
+        <head>
+            ${helmet.title.toString()}
+            ${helmet.meta.toString()}
+            ${helmet.link.toString()}
+        </head>
+        <body ${helmet.bodyAttributes.toString()}>
+            <div id="content">
+                // React stuff here
+            </div>
+        </body>
+    </html>
+`;
+
+```
